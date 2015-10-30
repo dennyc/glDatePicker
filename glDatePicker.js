@@ -350,8 +350,8 @@
 					.addClass(cssName)
 					.children().remove();
 
-				// Bind to resize event to position calendar
-				var onResize = function() {
+				// Bind to resize/scroll event to position calendar
+				var onReposition = function() {
 					var elPos = el.offset();
 					calendar.css(
 					{
@@ -359,8 +359,9 @@
 						left: (elPos.left + options.calendarOffset.x) + 'px'
 					});
 				};
-				$(window).resize(onResize);
-				onResize();
+				$(window).resize(onReposition);
+        $(window).scroll(onReposition);
+				onReposition();
 
 				// Create variables for cells
 				var cellCSS =
